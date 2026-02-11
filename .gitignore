@@ -1,0 +1,46 @@
+# Ignorar archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+**/.venv/
+**/venv/
+**/env/
+.pytest_cache/
+
+# Archivos de Node.js
+node_modules/
+.next/
+dist/
+build/
+
+# Archivos de IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Base de datos local (si usas SQLite para pruebas)
+*.db
+*.sqlite
+
+# Docker volumes (opcional, podrías querer commitear docker-compose.yml)
+# Si descomentas esto, los volúmenes no se trackearán
+# docker-compose.override.yml
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Uploads y archivos temporales
+uploads/
+temp/
+tmp/

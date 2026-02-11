@@ -1,0 +1,126 @@
+.page {
+  --background: #fafafa;
+  --foreground: #fff;
+
+  --text-primary: #000;
+  --text-secondary: #666;
+
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+  --button-secondary-border: #ebebeb;
+
+  display: flex;
+  .page {
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 72px 24px;
+  }
+
+  .main {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: var(--bg-card);
+    padding: 56px;
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+
+  .main::after {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    border-radius: 36px;
+    border: 1px solid var(--ring);
+    pointer-events: none;
+  }
+
+  .badge {
+    text-transform: uppercase;
+    letter-spacing: 0.26em;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .main h1 {
+    font-size: clamp(2.4rem, 3vw, 3.2rem);
+    font-family: var(--font-serif), serif;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .main p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .primary,
+  .secondary {
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(221, 63, 47, 0.25);
+  }
+
+  .secondary {
+    border: 1px solid var(--ring);
+    color: var(--bg-ink);
+    background: transparent;
+  }
+
+  .primary:hover,
+  .secondary:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 700px) {
+    .main {
+      padding: 40px 28px;
+    }
+  }
+  }
+
+  .intro {
+    gap: 16px;
+  }
+
+  .intro h1 {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -1.92px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert();
+  }
+
+  .page {
+    --background: #000;
+    --foreground: #000;
+
+    --text-primary: #ededed;
+    --text-secondary: #999;
+
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+    --button-secondary-border: #1a1a1a;
+  }
+}
