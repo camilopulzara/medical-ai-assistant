@@ -50,7 +50,7 @@ medical-ai-assistant/
 
 ### Prerequisitos
 
-- **Python 3.10+** instalado (tienes 3.10 en `C:\Users\pulzara\AppData\Local\Programs\Python\Python310`)
+- **Python 3.12+** instalado
 - **Docker Desktop** instalado y corriendo
 - **Node.js 20+** (para el frontend, cuando esté listo)
 
