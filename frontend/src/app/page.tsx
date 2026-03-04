@@ -15,7 +15,7 @@ export default function Home() {
           <Link className={styles.primary} href="/login">
             Ir al login
           </Link>
-          <a className={styles.secondary} href="http://localhost:8000/docs">
+          <a className={styles.secondary} href="http://localhost:8001/docs">
             Ver API
           </a>
         </div>

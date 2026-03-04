@@ -1,13 +1,24 @@
+import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from config import settings
 from database import init_db
-from routers import patients, appointments, chat
+from routers import patients, appointments, chat, auth, documents
+import sys
+import io
+from pathlib import Path
+
+# Configurar encoding UTF-8 correcto
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+if sys.stderr.encoding != 'utf-8':
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # Crear aplicación FastAPI
 app = FastAPI(
     title="Medical AI Assistant API",
-    description="Backend para asistente médico inteligente",
+    description="Backend para asistente medico inteligente",
     version="1.0.0",
     debug=settings.DEBUG
 )
@@ -57,6 +68,13 @@ async def health_check():
 app.include_router(patients.router)
 app.include_router(appointments.router)
 app.include_router(chat.router)
+app.include_router(auth.router)
+app.include_router(documents.router)
+
+# Servir archivos estáticos desde carpeta uploads
+uploads_dir = Path(settings.UPLOADS_DIR)
+uploads_dir.mkdir(parents=True, exist_ok=True)
+app.mount("/uploads", StaticFiles(directory=settings.UPLOADS_DIR), name="uploads")
 
 
 # Punto de entrada

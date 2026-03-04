@@ -23,6 +23,14 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "your-secret-key-here-change-in-production"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    DOWNLOAD_TOKEN_EXPIRE_MINUTES: int = 15  # Enlaces de descarga válidos 15 minutos
+    
+    # Uploads
+    UPLOADS_DIR: str = "uploads"  # Carpeta para documentos médicos
+
+    # Credenciales demo para login
+    ADMIN_EMAIL: str = "admin@medical-ai.com"
+    ADMIN_PASSWORD: str = "admin123"
     
     # OpenAI
     OPENAI_API_KEY: str = ""
