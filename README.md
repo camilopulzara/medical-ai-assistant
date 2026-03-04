@@ -4,25 +4,29 @@ Asistente médico inteligente que conversa con pacientes, gestiona citas y docum
 
 ## 🎯 Características
 
-- 💬 **Chat inteligente en tiempo real** con WebSocket
-- 🤖 **IA conversacional** con LangGraph
-- 📅 **Gestión automática de citas**
-- 📄 **Almacenamiento de documentos médicos**
+- 💬 **Chat inteligente en tiempo real** con interfaz completa
+- 🤖 **IA conversacional avanzada** con LangGraph + Groq API (llama-3.3-70b-versatile)
+- 🧠 **Memoria conversacional** con historial de 8 mensajes
+- 🛡️ **Guardrails anti-alucinación** para prevenir datos inventados
+- 📅 **Gestión automática de citas** con confirmación en lenguaje natural
+- 📄 **Descarga segura de documentos** con tokens JWT (15 min expiry)
+- 🔐 **Sistema de autenticación** completo
 - 🗄️ **Base de datos PostgreSQL** con Docker
-- 🚀 **API REST** con FastAPI
-- ⚡ **Frontend moderno** con Next.js (próximamente)
+- 🚀 **API REST completa** con FastAPI
+- ⚡ **Frontend moderno** con Next.js + TypeScript
 
 ## 🛠️ Stack Tecnológico
 
 | Tecnología | Propósito | Estado |
 |------------|-----------|--------|
-| **Next.js** | Frontend / UI | ⏳ Pendiente |
+| **Next.js 15** | Frontend / UI | ✅ Implementado |
 | **FastAPI** | Backend / API REST | ✅ Implementado |
-| **LangGraph** | Orquestación de IA | ⏳ Pendiente |
-| **PyTorch / LLM** | Modelos de IA | ⏳ Pendiente |
+| **LangGraph** | Orquestación de IA | ✅ Implementado |
+| **Groq API** | LLM (llama-3.3-70b) | ✅ Implementado |
 | **PostgreSQL** | Base de datos | ✅ Configurado |
 | **Docker** | Containerización | ✅ Configurado |
-| **WebSocket** | Chat en tiempo real | ✅ Implementado |
+| **JWT** | Autenticación segura | ✅ Implementado |
+| **SQLAlchemy** | ORM | ✅ Implementado |
 
 ## 📁 Estructura del Proyecto
 
@@ -30,17 +34,26 @@ Asistente médico inteligente que conversa con pacientes, gestiona citas y docum
 medical-ai-assistant/
 ├── backend/                    # Backend FastAPI
 │   ├── main.py                # Punto de entrada
-│   ├── config.py              # Configuración
+│   ├── run_backend.py         # Script de inicio con env vars
+│   ├── config.py              # Configuración (JWT, uploads, DB)
 │   ├── database.py            # Conexión PostgreSQL
-│   ├── models.py              # Modelos de datos
+│   ├── models.py              # Modelos de datos (ORM)
 │   ├── requirements.txt       # Dependencias Python
 │   ├── routers/               # Endpoints API
+│   │   ├── auth.py           # Autenticación y login
 │   │   ├── patients.py        # CRUD pacientes
 │   │   ├── appointments.py    # Gestión de citas
-│   │   └── chat.py           # WebSocket chat
-│   └── services/              # Lógica de negocio
-│       └── ai_agent.py       # Agente IA (LangGraph)
-├── frontend/                  # Frontend Next.js (próximamente)
+│   │   ├── chat.py           # Chat con memoria conversacional
+│   │   └── documents.py      # Descarga segura con JWT
+│   ├── services/              # Lógica de negocio
+│   │   └── ai_agent.py       # Agente IA (LangGraph + Groq)
+│   └── uploads/              # Documentos médicos
+├── frontend/                  # Frontend Next.js + TypeScript
+│   ├── src/app/
+│   │   ├── page.tsx          # Landing page
+│   │   ├── login/            # Sistema de login
+│   │   └── chat/             # Interfaz de chat
+│   └── package.json
 ├── docker-compose.yml         # Configuración Docker
 ├── QUICKSTART.md             # Guía de inicio rápido
 └── DOCKER.md                 # Documentación Docker
@@ -133,28 +146,39 @@ ws.send(JSON.stringify({content: "Necesito agendar una cita"}));
 - [x] FastAPI con endpoints básicos
 - [x] PostgreSQL con Docker
 - [x] Modelos de base de datos
-- [x] WebSocket para chat
+- [x] Sistema de chat funcional
 
-### Fase 2: Inteligencia IA ⏳
-- [ ] Integrar LangGraph
-- [ ] Implementar agente conversacional
-- [ ] Detección de intenciones
-- [ ] Extracción de información
-- [ ] Gestión automática de citas via IA
+### Fase 2: Inteligencia IA ✅
+- [x] Integrar LangGraph con StateGraph
+- [x] Implementar agente conversacional Groq
+- [x] Detección de intenciones (citas, documentos, historia)
+- [x] Memoria conversacional (8 mensajes)
+- [x] Guardrails anti-alucinación
+- [x] Gestión automática de citas via IA
+- [x] Reprogramación con confirmación
 
-### Fase 3: Frontend 🔜
-- [ ] Aplicación Next.js
-- [ ] Interfaz de chat
+### Fase 3: Frontend ✅
+- [x] Aplicación Next.js + TypeScript
+- [x] Sistema de autenticación
+- [x] Interfaz de chat funcional
+- [x] Landing page
 - [ ] Dashboard de pacientes
-- [ ] Gestión de citas
-- [ ] Subida de documentos
+- [ ] Panel de gestión de citas
+- [ ] Subida de documentos via UI
 
-### Fase 4: Avanzado 🔮
-- [ ] Autenticación JWT
-- [ ] Roles y permisos
+### Fase 4: Seguridad y Documentos ✅
+- [x] Autenticación JWT
+- [x] Descarga segura de documentos con tokens
+- [x] Sistema de permisos por paciente
+- [ ] Roles y permisos avanzados
 - [ ] Notificaciones por email
+
+### Fase 5: Producción 🔜
 - [ ] Deploy con Docker Compose completo
 - [ ] Tests automatizados
+- [ ] CI/CD pipeline
+- [ ] Monitoreo y logs
+- [ ] Backup automático de BD
 
 ## 🔧 Comandos Útiles
 
