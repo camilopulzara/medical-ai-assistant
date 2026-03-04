@@ -27,6 +27,7 @@ build/
 # Logs
 *.log
 logs/
+backend_log.txt
 
 # Base de datos local (si usas SQLite para pruebas)
 *.db
@@ -44,3 +45,12 @@ Thumbs.db
 uploads/
 temp/
 tmp/
+test_response.txt
+backend/test_*.txt
+
+# Scripts de utilidad de desarrollo (opcional, descomenta si no quieres trackearlos)
+# backend/reset_db.py
+# backend/populate_db.py
+# backend/nuclear_reset.py
+# backend/check_*.py
+# backend/test_*.py
